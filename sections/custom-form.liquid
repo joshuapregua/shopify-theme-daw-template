@@ -1,6 +1,33 @@
 {% schema %}
   {
-    "name": "Section name",
+    "name": "Custom Form",
     "settings": []
   }
 {% endschema %}
+
+<div class="custom-form">
+  <h2>Contact Us</h2>
+  <form method="post" action="{{ routes.contact_url }}">
+    <input type="hidden" name="form_type" value="contact">
+    <input type="hidden" name="utf8" value="✓">
+    
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="contact[name]" required>
+    
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="contact[email]" required>
+    
+    <label for="message">Your Message</label>
+    <textarea id="message" name="contact[body]" required></textarea>
+    
+    <button type="submit">Send Message</button>
+  </form>
+  
+  {% if form.posted_successfully? %}
+    <p>Thank you for contacting us! We'll get back to you soon.</p>
+  {% endif %}
+  
+  {% if form.errors %}
+    <p>Please correct the errors and try again.</p>
+  {% endif %}
+</div>
