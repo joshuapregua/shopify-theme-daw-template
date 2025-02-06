@@ -5,6 +5,8 @@
   }
 {% endschema %}
 
+{{ 'custom-form.css' | asset_url | stylesheet_tag }}
+
 <div class="custom-form">
   <h2>Contact Us</h2>
   <form method="post" action="{{ routes.contact_url }}">
